@@ -1,5 +1,5 @@
 # reChord
-operating at the intersection of my poor memory, mediocre programming skills, and lack of care for good ui, ReChord is a program to help you create and display chord diagrams.
+operating at the intersection of my poor memory, mediocre programming skills, and lack of care for good ui, reChord is a program to help you create and display chord diagrams.
 
 ## features
 - create chord diagrams
