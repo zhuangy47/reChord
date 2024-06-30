@@ -9,4 +9,8 @@ operating at the intersection of my poor memory, mediocre programming skills, an
 - suffer from poor ui
 
 ## usage
-either download the zip file and run `ReChord.exe` or clone the git repo and run `main.py`. make sure to run it in its own directory. hopefully it works.
+either download the zip file or clone the git repo and run `main.py`. make sure to run it in its own directory.
+to start, create chord diagrams with the 'create' button. add/remove these diagrams to the main canvas with the 'add/remove' button.
+for each diagram you create, it creates an svg file. delete with the 'delete' button.
+save the current state of the canvas using the 'save' button.
+load a save using the 'load' button.
