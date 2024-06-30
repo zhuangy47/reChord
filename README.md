@@ -9,4 +9,4 @@ operating at the intersection of my poor memory, mediocre programming skills, an
 - suffer from poor ui
 
 ## usage
-either download the zip file or clone the git repo and run `main.py`. make sure to run it in its own directory.
+either download the zip file and run `ReChord.exe` or clone the git repo and run `main.py`. make sure to run it in its own directory. hopefully it works.
