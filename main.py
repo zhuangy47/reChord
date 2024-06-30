@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import filedialog, simpledialog, ttk
 from PIL import Image, ImageTk
 import os
+import sys
 from svglib.svglib import svg2rlg
 from reportlab.graphics import renderPM
 import lib.chord_diagram_gen as cg
@@ -16,14 +17,26 @@ BUTTON_STYLE = {
     "bd": 2,
     "relief": tk.RAISED,
 }
+# Shenanigans for PyInstaller
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
 
+    return os.path.join(base_path, relative_path)
+
+def create_dirs():
+    os.makedirs('./save', exist_ok=True)
+    os.makedirs('./tmp/svg', exist_ok=True)
 class ReChord(tk.Tk):
     def __init__(self):
         super().__init__()
 
         self.title("ReChord")
         self.geometry("800x600")
-        self.iconbitmap("logo.ico")
+        self.iconbitmap(resource_path("logo.ico"))
 
         self.canvas = tk.Canvas(self, bg='white')
         self.canvas.pack(fill=tk.BOTH, expand=True)
@@ -582,9 +595,13 @@ class CreatePopup(tk.Toplevel):
                 if (cell == 'b' and not in_sequence):
                     starting_string = string_index + 1
                     in_sequence = True
-                if ( ( (cell == '') or (string_index == num_strings - 1) ) and in_sequence ):
+                if ( ( cell == '') and in_sequence ):
                     ending_string = string_index
                     barres.append((starting_fret + fret_index, starting_string, ending_string))
+                    in_sequence = False
+            if (in_sequence):
+                ending_string = num_strings
+                barres.append((starting_fret + fret_index, starting_string, ending_string))
 
         return barres
     
@@ -661,5 +678,6 @@ class CreatePopup(tk.Toplevel):
             print(f"Error previewing SVG: {e}")
 
 if __name__ == "__main__":
+    create_dirs()
     app = ReChord()
     app.mainloop()
