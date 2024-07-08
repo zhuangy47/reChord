@@ -18,3 +18,6 @@ for each diagram you create, it creates an svg file. delete with the 'delete' bu
 save the current state of the canvas using the 'save' button.
 
 load a save using the 'load' button.
+
+## bugs
+there are no bugs, only features that add ✨ character ✨
